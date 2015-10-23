@@ -27,10 +27,6 @@ public class Book {
 	
 	@ManyToOne
 	protected Publisher publisher;
-	
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getId() {
 		return id;
@@ -70,5 +66,21 @@ public class Book {
 
 	public void setStoryline(String storyline) {
 		this.storyline = storyline;
+	}
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
 }

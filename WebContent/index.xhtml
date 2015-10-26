@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Books</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body>
+	<ui:repeat var="book" value="#{reqBook.allBooks}">
+		<h1><h:outputText value="#{book.title} (#{book.isbn})"/></h1>
+		<h2>by <ui:repeat var="author" value="#{book.authors}" varStatus="status">
+					<h:outputText value="#{author.firstname} #{author.lastname}"/>
+					<c:if test="!status.last">, </c:if>
+				</ui:repeat>
+		</h2>
+		<p><h:outputText value="#{book.storyline}"/></p>
+	</ui:repeat>
+</body>
+</html>

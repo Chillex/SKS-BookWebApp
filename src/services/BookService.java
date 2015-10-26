@@ -17,4 +17,10 @@ public class BookService {
 		return em.createNamedQuery("Book.selectAll", Book.class)
 				 .getResultList();
 	}
+	
+	public List<Book> getBooksByTitle(String title) {
+		return em.createNamedQuery("Book.findByTitle", Book.class)
+				.setParameter("title", new StringBuilder("%").append(title).append("%").toString())
+				.getResultList();
+	}
 }

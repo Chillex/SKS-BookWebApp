@@ -4,28 +4,55 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import util.IntegerAdapter;
 
 @Entity
-@NamedQuery(name="Book.selectAll", query="SELECT b FROM Book b")
+@NamedQueries({
+	@NamedQuery(name="Book.selectAll", query="SELECT b FROM Book b"),
+	@NamedQuery(name="Book.findByTitle", query="SELECT b FROM Book b WHERE b.title LIKE :title")
+})
+@XmlRootElement(name = "book")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	protected int id;
+	@XmlID
+	@XmlAttribute
+	@XmlJavaTypeAdapter(type = Integer.class, value = IntegerAdapter.class)
+	protected Integer id;
 	
 	protected String title;
 	protected String isbn;
 	protected Date publishDate;
+	@Lob
 	protected String storyline;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
+	@XmlIDREF
+	@XmlElementWrapper(name = "authors")
+	@XmlElement(name = "author")
 	protected List<Author> authors;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+	@XmlIDREF
 	protected Publisher publisher;
 
 	public int getId() {

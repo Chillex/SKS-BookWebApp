@@ -3,6 +3,7 @@ package services;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import entities.Book;
@@ -18,7 +19,12 @@ public class BookWebServiceImpl implements BookWebService {
 	}
 
 	@Override
-	public List<Book> getBooksByTitle(String title) {
+	public List<Book> getBooksByTitle(@WebParam(name = "title") String title) {
 		return bookService.getBooksByTitle(title);
+	}
+
+	@Override
+	public void addBooks(@WebParam(name = "book") List<Book> books) {
+		bookService.addBooks(books);
 	}
 }

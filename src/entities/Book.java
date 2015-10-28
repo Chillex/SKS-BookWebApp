@@ -1,6 +1,6 @@
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,11 +18,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import util.DateAdapter;
 import util.IntegerAdapter;
 
 @Entity
@@ -34,25 +33,31 @@ import util.IntegerAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@XmlID
-	@XmlAttribute
+	@XmlAttribute(required = true)
 	@XmlJavaTypeAdapter(type = Integer.class, value = IntegerAdapter.class)
 	protected Integer id;
-	
+
+	@XmlAttribute(required = true)
 	protected String title;
+	
+	@XmlAttribute(required = true)
 	protected String isbn;
+
+	@XmlAttribute(required = true)
+	@XmlJavaTypeAdapter(type = Date.class, value = DateAdapter.class)
 	protected Date publishDate;
+
+	@XmlAttribute(required = true)
 	@Lob
 	protected String storyline;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@XmlIDREF
 	@XmlElementWrapper(name = "authors")
 	@XmlElement(name = "author")
 	protected List<Author> authors;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@XmlIDREF
+	@XmlElement(required = true)
 	protected Publisher publisher;
 
 	public int getId() {

@@ -38,18 +38,32 @@ public class Book {
 	protected Integer id;
 
 	@XmlAttribute(required = true)
+	protected String isbn;
+	
+	@XmlAttribute(required = true)
 	protected String title;
 	
 	@XmlAttribute(required = true)
-	protected String isbn;
-
+	protected String subtitle;
+	
 	@XmlAttribute(required = true)
+	protected String description;
+	
+	@XmlAttribute(required = true)
+	protected int pages;
+	
+	@XmlAttribute(required = true)
+	protected String language;
+
+	// NOT NEEDED ACCORDING TO XML - WHAT TO DO?
+	/*@XmlAttribute(required = true)
 	@XmlJavaTypeAdapter(type = Date.class, value = DateAdapter.class)
-	protected Date publishDate;
-
-	@XmlAttribute(required = true)
+	protected Date publishDate;*/
+	
+	// NOT NEEDED ACCORDING TO XML - WHAT TO DO?
+	/*@XmlAttribute(required = true)
 	@Lob
-	protected String storyline;
+	protected String storyline;*/
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@XmlElementWrapper(name = "authors")
@@ -83,8 +97,40 @@ public class Book {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+	
+	public String getSubtitle() {
+		return subtitle;
+	}
 
-	public Date getPublishDate() {
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getPages() {
+		return pages;
+	}
+
+	public void setPages(int pages) {
+		this.pages = pages;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	/*public Date getPublishDate() {
 		return publishDate;
 	}
 
@@ -98,7 +144,7 @@ public class Book {
 
 	public void setStoryline(String storyline) {
 		this.storyline = storyline;
-	}
+	}*/
 
 	public List<Author> getAuthors() {
 		return authors;

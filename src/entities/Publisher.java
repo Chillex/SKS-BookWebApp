@@ -30,6 +30,12 @@ public class Publisher {
 	@XmlAttribute(required = true)
 	protected String name;
 	
+	@XmlAttribute(required = true)
+	protected String postcode;
+	
+	@XmlAttribute(required = true)
+	protected String countrycode;
+	
 	@OneToMany(mappedBy = "publisher")
 	@XmlTransient
 	protected List<Book> books;
@@ -48,6 +54,22 @@ public class Publisher {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getCountrycode() {
+		return countrycode;
+	}
+
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 
 	public List<Book> getBooks() {

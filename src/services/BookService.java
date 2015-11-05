@@ -38,6 +38,8 @@ public class BookService {
 			for(Book book : books) {
 				Publisher publisher = em.createNamedQuery("Publisher.find", Publisher.class)
 										.setParameter("name", book.getPublisher().getName())
+										.setParameter("postcode", book.getPublisher().getPostcode())
+										.setParameter("countrycode", book.getPublisher().getCountrycode())
 										.getSingleResult();
 				
 				List<Author> authors = new ArrayList<Author>();

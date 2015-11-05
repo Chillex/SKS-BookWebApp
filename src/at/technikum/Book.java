@@ -1,6 +1,5 @@
-package entities;
+package at.technikum;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -20,9 +18,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import util.DateAdapter;
-import util.IntegerAdapter;
 
 @Entity
 @NamedQueries({

@@ -1,4 +1,4 @@
-package util;
+package at.technikum;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

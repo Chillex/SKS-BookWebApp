@@ -1,4 +1,4 @@
-package util;
+package at.technikum;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

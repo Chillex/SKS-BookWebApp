@@ -1,12 +1,10 @@
-package entities;
+package at.technikum;
 
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import services.BookService;
 
 @RequestScoped
 @Named("reqBook")

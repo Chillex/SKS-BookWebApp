@@ -1,11 +1,9 @@
-package services;
+package at.technikum;
 
 import java.util.List;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
-
-import entities.Book;
 
 @WebService
 public interface BookWebService {

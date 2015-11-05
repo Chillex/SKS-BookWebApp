@@ -1,4 +1,4 @@
-package services;
+package at.technikum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-
-import entities.Author;
-import entities.Book;
-import entities.Publisher;
 
 @Stateless
 public class BookService {

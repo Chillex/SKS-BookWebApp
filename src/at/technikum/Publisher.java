@@ -1,4 +1,4 @@
-package entities;
+package at.technikum;
 
 import java.util.List;
 
@@ -15,10 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import util.IntegerAdapter;
-
 @Entity
-@NamedQuery(name = "Publisher.find", query = "SELECT p FROM Publisher p WHERE p.name = :name")
+@NamedQuery(name = "Publisher.find", query = "SELECT p FROM Publisher p WHERE p.name = :name AND p.postcode = :postcode AND p.countrycode = :countrycode")
 @XmlRootElement(name = "publisher")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Publisher {
@@ -78,5 +76,9 @@ public class Publisher {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+	
+	public String toString() {
+		return name + ": " + postcode + " / " + countrycode;
 	}
 }

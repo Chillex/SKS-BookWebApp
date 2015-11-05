@@ -1,4 +1,4 @@
-package entities;
+package at.technikum;
 
 import java.util.Date;
 import java.util.List;
@@ -15,9 +15,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import util.DateAdapter;
-import util.IntegerAdapter;
 
 @Entity
 @NamedQuery(name = "Author.find", query = "SELECT a FROM Author a WHERE a.firstname = :firstname AND a.lastname = :lastname AND a.birthdate = :birthdate")

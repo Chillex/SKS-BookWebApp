@@ -1,4 +1,4 @@
-package services;
+package at.technikum;
 
 import java.util.List;
 
@@ -6,9 +6,7 @@ import javax.inject.Inject;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import entities.Book;
-
-@WebService(endpointInterface = "services.BookWebService", portName = "BookWebServicePort", serviceName = "BookWebService")
+@WebService(endpointInterface = "at.technikum.BookWebService", portName = "BookWebServicePort", serviceName = "BookWebService")
 public class BookWebServiceImpl implements BookWebService {
 	@Inject
 	private BookService bookService;

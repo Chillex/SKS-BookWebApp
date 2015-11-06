@@ -50,16 +50,6 @@ public class Book {
 	@XmlAttribute(required = true)
 	protected String language;
 
-	// NOT NEEDED ACCORDING TO XML - WHAT TO DO?
-	/*@XmlAttribute(required = true)
-	@XmlJavaTypeAdapter(type = Date.class, value = DateAdapter.class)
-	protected Date publishDate;*/
-	
-	// NOT NEEDED ACCORDING TO XML - WHAT TO DO?
-	/*@XmlAttribute(required = true)
-	@Lob
-	protected String storyline;*/
-	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@XmlElementWrapper(name = "authors")
 	@XmlElement(name = "author")
@@ -124,22 +114,6 @@ public class Book {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-
-	/*public Date getPublishDate() {
-		return publishDate;
-	}
-
-	public void setPublishDate(Date publishDate) {
-		this.publishDate = publishDate;
-	}
-
-	public String getStoryline() {
-		return storyline;
-	}
-
-	public void setStoryline(String storyline) {
-		this.storyline = storyline;
-	}*/
 
 	public List<Author> getAuthors() {
 		return authors;

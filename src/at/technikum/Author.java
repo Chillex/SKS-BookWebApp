@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
 @NamedQuery(name = "Author.find", query = "SELECT a FROM Author a WHERE a.firstname = :firstname AND a.lastname = :lastname AND a.birthdate = :birthdate")
-@XmlRootElement(name = "author")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)

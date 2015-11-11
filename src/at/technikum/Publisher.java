@@ -77,8 +77,15 @@ public class Publisher {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	
+
+	@Override
 	public String toString() {
-		return name + ": " + postcode + " / " + countrycode;
+		return "Publisher [id=" + id + ", name=" + name + ", postcode="
+				+ postcode + ", countrycode=" + countrycode + ", books="
+				+ books + "]";
 	}
+	
+	/*public String toString() {
+		return name + ": " + postcode + " / " + countrycode;
+	}*/
 }

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,7 +16,10 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
-@NamedQuery(name = "Publisher.find", query = "SELECT p FROM Publisher p WHERE p.name = :name AND p.postcode = :postcode AND p.countrycode = :countrycode")
+@NamedQueries({
+	@NamedQuery(name = "Publisher.find", query = "SELECT p FROM Publisher p WHERE p.name = :name AND p.postcode = :postcode AND p.countrycode = :countrycode"),
+	@NamedQuery(name = "Publisher.findAll", query = "SELECT p FROM Publisher p")
+})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Publisher {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,11 +40,11 @@ public class Publisher {
 	@XmlTransient
 	protected List<Book> books;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

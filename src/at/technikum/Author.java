@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,8 +18,12 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
-@NamedQuery(name = "Author.find", query = "SELECT a FROM Author a WHERE a.firstname = :firstname AND a.lastname = :lastname AND a.birthdate = :birthdate")
+@NamedQueries({
+	@NamedQuery(name = "Author.find", query = "SELECT a FROM Author a WHERE a.firstname = :firstname AND a.lastname = :lastname AND a.birthdate = :birthdate"),
+	@NamedQuery(name = "Author.findAll", query = "SELECT a FROM Author a")
+})
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Author {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@XmlAttribute(required = true)
@@ -47,11 +52,11 @@ public class Author {
 		this.birthdate = birthdate;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

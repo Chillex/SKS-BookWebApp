@@ -39,6 +39,14 @@ public class Publisher {
 	@OneToMany(mappedBy = "publisher")
 	@XmlTransient
 	protected List<Book> books;
+	
+	public Publisher() {}
+	
+	public Publisher(String name, String postcode, String countrycode) {
+		this.name = name;
+		this.postcode = postcode;
+		this.countrycode = countrycode;
+	}
 
 	public Integer getId() {
 		return id;

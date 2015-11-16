@@ -13,7 +13,6 @@ import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -23,7 +22,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 	@NamedQuery(name = "Author.findAll", query = "SELECT a FROM Author a")
 })
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement
 public class Author {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@XmlAttribute(required = true)

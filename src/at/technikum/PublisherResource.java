@@ -29,8 +29,8 @@ public class PublisherResource {
 	
 	// create
 	@POST
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response createPublisher(Publisher newPublisher) {
 		Publisher publisher = publisherService.createPublisher(newPublisher);
 		
@@ -46,7 +46,7 @@ public class PublisherResource {
 	// retrieve
 	@GET
 	@Path("/{publisherId}")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPublisherAsJSONXML(@PathParam("publisherId") Integer publisherId) {
 		Publisher publisher = publisherService.getPublisher(publisherId);
 		
@@ -58,7 +58,7 @@ public class PublisherResource {
 	}
 	
 	@GET
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllPublishers() {
 		return Response.ok(publisherService.getAllPublishers())
 					   .build();
@@ -67,8 +67,8 @@ public class PublisherResource {
 	// update
 	@PUT
 	@Path("/{publisherId}")
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response updatePublisher(@PathParam("publisherId") Integer publisherId, Publisher updatedPublisher) {
 		Publisher publisher = publisherService.updatePublisher(publisherId, updatedPublisher);
 		

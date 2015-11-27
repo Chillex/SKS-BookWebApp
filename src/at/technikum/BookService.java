@@ -4,31 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import org.jboss.ejb3.annotation.SecurityDomain;
+
 @Stateless
+@SecurityDomain("BookSD")
 public class BookService {
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Resource
 	private SessionContext ctx;
-	
+
+	@RolesAllowed({"BSWrite", "BSRead"})
 	public List<Book> getAllBooks() {
 		return em.createNamedQuery("Book.selectAll", Book.class)
 				 .getResultList();
 	}
-	
+
+	@RolesAllowed({"BSWrite", "BSRead"})
 	public List<Book> getBooksByTitle(String title) {
 		return em.createNamedQuery("Book.findByTitle", Book.class)
 				.setParameter("title", new StringBuilder("%").append(title).append("%").toString())
 				.getResultList();
 	}
-	
+
+	@RolesAllowed("BSWrite")
 	public void addBooks(List<Book> books) {
 		try {
 			for(Book book : books) {

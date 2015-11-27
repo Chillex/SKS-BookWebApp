@@ -3,7 +3,6 @@ package at.technikum;
 import java.net.URI;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,7 +19,6 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/author")
-@Transactional
 public class AuthorResource {
 	@Context
 	UriInfo ui;
@@ -29,8 +27,8 @@ public class AuthorResource {
 	
 	// create
 	@POST
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response createAuthor(Author newAuthor) {
 		Author author = authorService.createAuthor(newAuthor);
 		
@@ -46,7 +44,7 @@ public class AuthorResource {
 	// retrieve
 	@GET
 	@Path("/{authorId}")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAuthorAsJSONXML(@PathParam("authorId") Integer authorId) {
 		Author author = authorService.getAuthor(authorId);
 		
@@ -58,7 +56,7 @@ public class AuthorResource {
 	}
 	
 	@GET
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllAuthors() {
 		return Response.ok(authorService.getAllAuthors())
 					   .build();
@@ -67,8 +65,8 @@ public class AuthorResource {
 	// update
 	@PUT
 	@Path("/{authorId}")
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateAuthor(@PathParam("authorId") Integer authorId, Author updatedAuthor) {
 		Author author = authorService.updateAuthor(authorId, updatedAuthor);
 		

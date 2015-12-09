@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Publishers</title>
+		
+		<style>
+			body {
+				font-family: Arial;
+			}
+			
+			li {
+				font-size: 18px;
+				cursor: pointer;
+			}
+		</style>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.get({
+					url: 'http://localhost:8080/BookServiceWebApp/resources/publisher',
+					dataType: 'json',
+					headers: {
+						Authorization: "Basic " + btoa('reader:123')
+					},
+					success: function(response) {
+						var $publishers = $('#publishers').empty();
+
+						response.forEach(function(publisher) {
+							var $publisher = $('<li>' + publisher.name + '</li>');
+
+							$publisher.click(function() {
+								var publisherInfo = 'ID: ' + publisher.id + '\n' +
+													'Name: ' + publisher.name + '\n' +
+													'Country: ' + publisher.countrycode + '\n' +
+													'Postcode: ' + publisher.postcode;
+
+								alert(publisherInfo);
+							});
+
+							$publishers.append($publisher)
+						});
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Publishers</h1>
+		<ul id="publishers"></ul>
+	</body>
+</html>
